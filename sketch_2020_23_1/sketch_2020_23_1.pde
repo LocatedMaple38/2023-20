@@ -1,15 +1,14 @@
-//Global Variablesint appWidth, appHeight;
+//Global Variables
 String title ="WAHOO!!", footer ="drip";
 PFont titleFont, footerFont;
-color purple=#2C08FF, resetDefaultInk=#123456, yellow = #E9FF00;
-float xTitle, yTitle, widthTitle, heightTitle;
+color resetDefaultInk=#123456, black = #000000;
+float xTitle, yTitle, widthTitle, heightTitle ;
 float xFooter, yFooter, widthFooter, heightFooter;
-float xRectBackground, yRectBackground, widthRectBackground, heightRectBackground;
 float xRectQuit, yRectQuit, widthRectQuit, heightRectQuit;
 float xClame, yClame, widthClame, heightClame;
 //float ;
 int appWidth, appHeight;
-//String ; //All text variables as name=value pairs
+//String titleFont = "hello", footerFont = "no" ; //All text variables as name=value pairs
 //PFont ; //All fonts used
 //color ; //colour palette & inks
 int sizeFont, size; //Text Variables
@@ -29,32 +28,33 @@ void setup() {
   //
   //Population
   xTitle = appWidth*1/4;
-  yTitle = appHeight*1/10;
+  yTitle = appHeight*1/8;
   widthTitle = appWidth*1/2;
-  heightTitle= appHeight*2/2;
+  heightTitle= appHeight*1/10;
   //
-  xFooter = xTitle*7/10;
-  yFooter = appHeight*7/10;
-  widthFooter = widthTitle*7/10;
-  heightFooter = heightTitle*1/10;
-  //
-  xRectBackground = appWidth*0;
-  yRectBackground = appHeight*0;
-  widthRectBackground = appWidth-1;
-  heightRectBackground = appHeight-1;
+  xFooter = appWidth*1/4;
+  yFooter = appHeight*1/4;
+  widthFooter = appWidth*1/2;
+  heightFooter = appHeight*1/10;
   //
   xRectQuit = appWidth*18/20-1;
   yRectQuit = appHeight*0/20;
   widthRectQuit = appWidth*1/10;
-  heightRectQuit = appHeight*1/10-10;
+  heightRectQuit = appHeight*1/10;
+  //
+  xClame = appWidth*3/8;
+  yClame = appHeight*3/4;
+  widthClame = appWidth*1/4;
+  heightClame = appHeight*1/10;
   //
   // DIVs or rect()
   // Layout our text space and typographical features
   rect( xTitle, yTitle, widthTitle, heightTitle );
-  rect( xFooter, yFooter, widthFooter, heightFooter );
-  //
-  rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
+  rect(xFooter, yFooter, widthFooter, heightFooter);
+  fill(255, 0, 0);
   rect(xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
+  fill(0, 255, 0);
+  rect(xClame, yClame, widthClame, heightClame);
   //rect(); //Image, foreground, near the top
   //rect(); //Copy and Paste this for all rect()s
   //
@@ -70,7 +70,7 @@ void setup() {
   // Fonts from OS (Operating System)
   //String[] fontList = PFont.list(); //Lists all fonts available on OS
   //printArray(fontList);
-  titleFont = createFont("Harrington", 55);
+  titleFont = createFont("ArialMT", 55);
   footerFont = createFont("ArialMT", 55); //Verify the font exists in Processing.Java
   // Tools / Create Font / Find Font / Do not press "OK", known bug
   //
@@ -89,13 +89,13 @@ void draw() {
   //
   //Drawing Font Code
   //
-  fill(purple); //ink
-  textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  fill(black); //ink
+  textAlign(CENTER, TOP); //Align X&Y, see Processing.org / Reference
   //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ];
   size = 60;
   textFont(titleFont, size);
   text (xTitle, yTitle, widthTitle, heightTitle );
-  fill(yellow); //ink
+  fill(black); //ink
   textAlign(CENTER, TOP); //Align X&Y, see Processing.org / Reference
   //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
   size = 120;
@@ -116,7 +116,7 @@ void mousePressed() {
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
   //
   if ( mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
-  //
+  if ( mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame) println("clamed");
 } //End mousePressed
 //
 //End MAIN Program
