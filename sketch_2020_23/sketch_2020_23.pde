@@ -46,7 +46,7 @@ void setup() {
   xRectQuit = appWidth*18/20-1;
   yRectQuit = appHeight*0/20;
   widthRectQuit = appWidth*1/10;
-  heightRectQuit = appHeight*1/12;
+  heightRectQuit = appHeight*1/10-10;
   //
   // DIVs or rect()
   // Layout our text space and typographical features
