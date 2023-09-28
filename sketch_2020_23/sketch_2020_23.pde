@@ -1,12 +1,13 @@
 //Global Variablesint appWidth, appHeight;
-//String title ="WAHOO!!", footer ="dripString title ="WAHOO!!", footer ="drip;
+String title ="WAHOO!!", footer ="drip";
 PFont titleFont, footerFont;
-color purple=#2C08FF, resetDefaultInk=#FFFFFF, yellow = #E9FF00;
+color purple=#2C08FF, resetDefaultInk=#123456, yellow = #E9FF00;
 float xTitle, yTitle, widthTitle, heightTitle;
 float xFooter, yFooter, widthFooter, heightFooter;
 float xRectBackground, yRectBackground, widthRectBackground, heightRectBackground;
 float xRectQuit, yRectQuit, widthRectQuit, heightRectQuit;
 float xClame, yClame, widthClame, heightClame;
+//float ;
 int appWidth, appHeight;
 //String ; //All text variables as name=value pairs
 //PFont ; //All fonts used
@@ -35,7 +36,7 @@ void setup() {
   xFooter = xTitle*7/10;
   yFooter = appHeight*7/10;
   widthFooter = widthTitle*7/10;
-  heightFooter = heightTitle;
+  heightFooter = heightTitle*1/10;
   //
   xRectBackground = appWidth*0;
   yRectBackground = appHeight*0;
@@ -52,7 +53,6 @@ void setup() {
   rect( xTitle, yTitle, widthTitle, heightTitle );
   rect( xFooter, yFooter, widthFooter, heightFooter );
   //
-  //DIVs
   rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   rect(xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
   //rect(); //Image, foreground, near the top
@@ -80,7 +80,7 @@ void draw() {
   //Drawing Text, copied for each line of text
   //fill( [colourName] ); //ink
   textAlign( CENTER, CENTER ); //Align X&Y, see Processing.org / Reference
-  //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
+  //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ];
   //size = [pixelNumberFontSize]; //integer number
   //textFont( [fontVariable], size ); // states which font to use
   //text ( [textStringName], [four rect() variables copied from DIVs]);
