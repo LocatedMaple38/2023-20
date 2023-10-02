@@ -1,16 +1,13 @@
 //Global Variables
-String title ="WAHOO!!", footer ="drip";
 PFont titleFont, footerFont;
-color resetDefaultInk=#123456, black = #000000;
+color resetDefaultInk=#000000, black = #000000;
 float xTitle, yTitle, widthTitle, heightTitle ;
 float xFooter, yFooter, widthFooter, heightFooter;
 float xRectQuit, yRectQuit, widthRectQuit, heightRectQuit;
 float xClame, yClame, widthClame, heightClame;
+float xNext, yNext, withNext, heightNext;
 //float ;
 int appWidth, appHeight;
-//String titleFont = "hello", footerFont = "no" ; //All text variables as name=value pairs
-//PFont ; //All fonts used
-//color ; //colour palette & inks
 int sizeFont, size; //Text Variables
 //
 //
@@ -79,37 +76,33 @@ void setup() {
 void draw() {
   //Drawing Text, copied for each line of text
   //fill( [colourName] ); //ink
-  textAlign( CENTER, CENTER ); //Align X&Y, see Processing.org / Reference
-  //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ];
-  //size = [pixelNumberFontSize]; //integer number
-  //textFont( [fontVariable], size ); // states which font to use
-  //text ( [textStringName], [four rect() variables copied from DIVs]);
-  //
-   //Text is same size or relative to rect()
-  //
-  //Drawing Font Code
-  //
+  textAlign( CENTER, CENTER );
   fill(black); //ink
   textAlign(CENTER, TOP); //Align X&Y, see Processing.org / Reference
   //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ];
-  size = 60;
+  size = 40;
   textFont(titleFont, size);
   text (xTitle, yTitle, widthTitle, heightTitle );
   fill(black); //ink
   textAlign(CENTER, TOP); //Align X&Y, see Processing.org / Reference
   //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
-  size = 120;
+  size = 40;
   textFont(footerFont, size);
   text ( xFooter, yFooter, widthFooter, heightFooter );
   fill(resetDefaultInk); //ink
   //
   //
-  //rect(  ); //Title: 
-  //rect(   ); //Footer: 
+  //rect(  ); //Title:
+  //rect(   ); //Footer:
 } //End draw
 //
 void keyPressed() {
-} //End keyPressed
+  
+  if (key == CODED && keyCode == ENTER) {
+    println("hi");
+      }
+}
+//End keyPressed
 //
 void mousePressed() {
   //When mouse is pressed
