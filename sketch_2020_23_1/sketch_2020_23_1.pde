@@ -1,4 +1,5 @@
 //Global Variables
+PImage rectQuit;  
 PFont titleFont, footerFont;
 color resetDefaultInk=#000000, black = #000000;
 float xTitle, yTitle, widthTitle, heightTitle ;
@@ -36,6 +37,7 @@ void setup() {
   yRectQuit = appHeight*0/20;
   widthRectQuit = appWidth*1/10;
   heightRectQuit = appHeight*1/10;
+  rectQuit = loadImage("../hello/exet.png");
   //
   xClame = appWidth*3/8;
   yClame = appHeight*3/4;
@@ -46,7 +48,6 @@ void setup() {
   // Layout our text space and typographical features
   rect( xTitle, yTitle, widthTitle, heightTitle );
   rect(xFooter, yFooter, widthFooter, heightFooter);
-  fill(255, 0, 0);
   rect(xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
   fill(0, 255, 0);
   rect(xClame, yClame, widthClame, heightClame);
@@ -82,7 +83,7 @@ void draw() {
   textFont(titleFont, size);
   text (xTitle, yTitle, widthTitle, heightTitle );
   fill(black); //ink
-  textAlign(CENTER, TOP); //Align X&Y, see Processing.org / Reference
+  textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
   size = 40;
   textFont(footerFont, size);
@@ -92,6 +93,7 @@ void draw() {
   //
   //rect(  ); //Title:
   //rect(   ); //Footer:
+  image (rectQuit, xRectQuit, yRectQuit, widthRectQuit, heightRectQuit );
 } //End draw
 //
 void keyPressed() {
