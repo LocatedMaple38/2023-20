@@ -9,8 +9,6 @@ float xNext, yNext, withNext, heightNext;
 //float ;
 int appWidth, appHeight;
 int sizeFont, size; //Text Variables
-//
-//
 void setup() {
   //Print & Println
   println("Hello World");
@@ -67,8 +65,8 @@ void setup() {
   // Fonts from OS (Operating System)
   //String[] fontList = PFont.list(); //Lists all fonts available on OS
   //printArray(fontList);
-  titleFont = createFont("ArialMT", 55);
-  footerFont = createFont("ArialMT", 55); //Verify the font exists in Processing.Java
+  titleFont = createFont("ArialMT", 1);
+  footerFont = createFont("ArialMT", 1); //Verify the font exists in Processing.Java
   // Tools / Create Font / Find Font / Do not press "OK", known bug
   //
 } //End setup
@@ -78,7 +76,7 @@ void draw() {
   //fill( [colourName] ); //ink
   textAlign( CENTER, CENTER );
   fill(black); //ink
-  textAlign(CENTER, TOP); //Align X&Y, see Processing.org / Reference
+  textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
   //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ];
   size = 40;
   textFont(titleFont, size);
@@ -97,9 +95,8 @@ void draw() {
 } //End draw
 //
 void keyPressed() {
-  
   if (key == CODED && keyCode == ENTER) {
-    println("hi");
+  println( "hi" );
       }
 }
 //End keyPressed
