@@ -1,4 +1,7 @@
 //Global Variables
+boolean next=false;
+Boolean brightnessControl=false; //Note: ARROWS
+Boolean nightmode=false; //Note: clock and turn on automatically
 PImage rectQuit; 
 PImage Clame;
 PFont titleFont, footerFont;
@@ -11,6 +14,8 @@ float xNext, yNext, withNext, heightNext;
 //float ;
 int appWidth, appHeight;
 int sizeFont, size; //Text Variables
+int brightnessNumber=255; //Range:1-255
+//int next;
 void setup() {
   //Print & Println
   println("Hello World");
@@ -18,8 +23,8 @@ void setup() {
   println("Display Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
   //Character Escapes, tab, new
   //
-  //fullScreen();
-  size(800, 600);
+  fullScreen();
+  //size(800, 600);
   appWidth = width;
   appHeight = height;
   //
@@ -51,7 +56,6 @@ void setup() {
   rect( xTitle, yTitle, widthTitle, heightTitle );
   rect(xFooter, yFooter, widthFooter, heightFooter);
   rect(xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
-  fill(0, 255, 0);
   rect(xClame, yClame, widthClame, heightClame);
   //rect(); //Image, foreground, near the top
   //rect(); //Copy and Paste this for all rect()s
@@ -75,6 +79,16 @@ void setup() {
 } //End setup
 //
 void draw() {
+  if ( brightnessControl==true ) tint (255, brightnessNumber); //Gray Scale: 1/2 tint (i.e 128/256=1/2)
+  //if ( nightmode==true ) tint ( 64, 64, 40 ); //Gray Scale: 1/2 tint (i.e 128/256=1/2)
+  if ( nightmode==true ) {
+    tint ( 64, 64, 40 );
+    println(nightmode);
+  } else {
+    noTint(); //See Processing DOC
+    println(nightmode);
+  }
+  //
   //Drawing Text, copied for each line of text
   //fill( [colourName] ); //ink
   textAlign( CENTER, CENTER );
@@ -99,10 +113,15 @@ void draw() {
   image (Clame, xClame, yClame, widthClame, heightClame);
 } //End draw
 //
-void keyPressed() {
-  if (key == CODED && keyCode == ENTER) {
-  println( "hi" );
-      }
+void keyPressed() {  
+  if ( key=='n' || key=='N' ) { //Nightmode, basic control is Boolean
+    if ( nightmode==true ) {
+      nightmode = false;
+    } else {
+      nightmode = true;
+    }
+  }
+//
 }
 //End keyPressed
 //
@@ -111,7 +130,9 @@ void mousePressed() {
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
   //
   if ( mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
-  if ( mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame) println("clamed");
+  if (key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
+   println("clamed");
+  }
 } //End mousePressed
 //
 //End MAIN Program
