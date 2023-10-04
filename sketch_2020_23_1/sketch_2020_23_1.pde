@@ -1,5 +1,6 @@
 //Global Variables
-PImage rectQuit;  
+PImage rectQuit; 
+PImage Clame;
 PFont titleFont, footerFont;
 color resetDefaultInk=#000000, black = #000000;
 float xTitle, yTitle, widthTitle, heightTitle ;
@@ -18,7 +19,7 @@ void setup() {
   //Character Escapes, tab, new
   //
   //fullScreen();
-  size(1000, 800);
+  size(800, 600);
   appWidth = width;
   appHeight = height;
   //
