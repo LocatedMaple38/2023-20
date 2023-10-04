@@ -43,6 +43,7 @@ void setup() {
   yClame = appHeight*3/4;
   widthClame = appWidth*1/4;
   heightClame = appHeight*1/10;
+  Clame = loadImage("../hello/next.png");
   //
   // DIVs or rect()
   // Layout our text space and typographical features
@@ -94,6 +95,7 @@ void draw() {
   //rect(  ); //Title:
   //rect(   ); //Footer:
   image (rectQuit, xRectQuit, yRectQuit, widthRectQuit, heightRectQuit );
+  image (Clame, xClame, yClame, widthClame, heightClame);
 } //End draw
 //
 void keyPressed() {
