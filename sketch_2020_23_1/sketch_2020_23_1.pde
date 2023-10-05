@@ -131,7 +131,7 @@ void mousePressed() {
   //
   if ( mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
   if (key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
-   println("clamed");
+   println("claimed");
   }
 } //End mousePressed
 //
