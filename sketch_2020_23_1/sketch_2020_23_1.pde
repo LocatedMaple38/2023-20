@@ -1,22 +1,33 @@
 //Global Variables
+color resetDefaultInk=#000000, black = #000000;
 boolean next=false;
 Boolean brightnessControl=false; //Note: ARROWS
 Boolean nightmode=false; //Note: clock and turn on automatically
 PImage rectQuit; 
 PImage Clame;
 PFont titleFont, footerFont;
-color resetDefaultInk=#000000, black = #000000;
 float xTitle, yTitle, widthTitle, heightTitle ;
 float xFooter, yFooter, widthFooter, heightFooter;
 float xRectQuit, yRectQuit, widthRectQuit, heightRectQuit;
 float xClame, yClame, widthClame, heightClame;
 float xNext, yNext, withNext, heightNext;
-//float ;
+float xNightMode, yNightMode, withNightMode, hightNightMode;
 int appWidth, appHeight;
+int NightMode;
 int sizeFont, size; //Text Variables
 int brightnessNumber=255; //Range:1-255
 //int next;
 void setup() {
+  int hourNightMode = hour(); //24-hour clock
+  println(hourNightMode);
+  if ( hourNightMode>17 ) {
+    nightmode=true;
+  } else if ( hourNightMode<05 ) {
+    nightmode=true;
+  } else {
+    nightmode=false;
+  }
+    //
   //Print & Println
   println("Hello World");
   println("Width:"+width, "\t", "Height:"+height);
@@ -51,12 +62,18 @@ void setup() {
   heightClame = appHeight*1/10;
   Clame = loadImage("../hello/next.png");
   //
+  xNightMode = appWidth*0;
+  yNightMode = appHeight*0;
+  withNightMode = appWidth*1/25;
+  hightNightMode = appHeight*1/25;
   // DIVs or rect()
   // Layout our text space and typographical features
   rect( xTitle, yTitle, widthTitle, heightTitle );
   rect(xFooter, yFooter, widthFooter, heightFooter);
   rect(xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
   rect(xClame, yClame, widthClame, heightClame);
+  //
+  rect(xNightMode, yNightMode, withNightMode, hightNightMode);
   //rect(); //Image, foreground, near the top
   //rect(); //Copy and Paste this for all rect()s
   //
@@ -80,7 +97,6 @@ void setup() {
 //
 void draw() {
   if ( brightnessControl==true ) tint (255, brightnessNumber); //Gray Scale: 1/2 tint (i.e 128/256=1/2)
-  //if ( nightmode==true ) tint ( 64, 64, 40 ); //Gray Scale: 1/2 tint (i.e 128/256=1/2)
   if ( nightmode==true ) {
     tint ( 64, 64, 40 );
     println(nightmode);
@@ -113,14 +129,16 @@ void draw() {
   image (Clame, xClame, yClame, widthClame, heightClame);
 } //End draw
 //
-void keyPressed() {  
-  if ( key=='n' || key=='N' ) { //Nightmode, basic control is Boolean
-    if ( nightmode==true ) {
-      nightmode = false;
-    } else {
-      nightmode = true;
-    }
+void keyPressed() {
+   if ( key==CODED && keyCode==UP || keyCode==DOWN ) { //Brightness keybind
+    brightnessControl = true;
+    if ( key==CODED && keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber+1
+    if ( key==CODED && keyCode==DOWN ) brightnessNumber-- ; //brightnessNumber-=1
+    //CONTINUE HERE with brightness toggles
+    println(brightnessNumber);
   }
+  //
+  
 //
 }
 //End keyPressed
@@ -131,6 +149,13 @@ void mousePressed() {
   //
   if ( mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
   if (key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
+  if ( key=='n' || key=='N'|| mouseX>NightMode+xNightMode && mouseX<NightMode+NightMode && mouseY<NightMode+withNightMode && mouseY>NightMode+hightNightMode );{ //Nightmode, basic control is Boolean
+    if ( nightmode==true ) {
+      nightmode = false;
+    } else {
+      nightmode = true;
+    }
+  }
    println("claimed");
   }
 } //End mousePressed
