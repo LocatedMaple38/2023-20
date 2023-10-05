@@ -149,14 +149,13 @@ void mousePressed() {
   //
   if ( mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
   if (key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
-  if ( key=='n' || key=='N'|| mouseX>NightMode+xNightMode && mouseX<NightMode+NightMode && mouseY<NightMode+withNightMode && mouseY>NightMode+hightNightMode );{ //Nightmode, basic control is Boolean
+    println("claimed");}
+  if ( key=='n' || key=='N'|| mouseX>xNightMode && mouseX<yNightMode && mouseY<withNightMode && mouseY>hightNightMode );{ //Nightmode, basic control is Boolean
     if ( nightmode==true ) {
       nightmode = false;
     } else {
       nightmode = true;
     }
-  }
-   println("claimed");
   }
 } //End mousePressed
 //
