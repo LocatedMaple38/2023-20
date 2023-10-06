@@ -20,7 +20,7 @@ int brightnessNumber=255; //Range:1-255
 void setup() {
   int hourNightMode = hour(); //24-hour clock
   println(hourNightMode);
-  if ( hourNightMode>17 ) {
+  if ( hourNightMode>12 ) {
     nightmode=true;
   } else if ( hourNightMode<05 ) {
     nightmode=true;
@@ -34,8 +34,8 @@ void setup() {
   println("Display Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
   //Character Escapes, tab, new
   //
-  fullScreen();
-  //size(800, 600);
+  //fullScreen();
+  size(500, 500);
   appWidth = width;
   appHeight = height;
   //
@@ -72,7 +72,6 @@ void setup() {
   rect(xFooter, yFooter, widthFooter, heightFooter);
   rect(xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
   rect(xClame, yClame, widthClame, heightClame);
-  //
   rect(xNightMode, yNightMode, withNightMode, hightNightMode);
   //rect(); //Image, foreground, near the top
   //rect(); //Copy and Paste this for all rect()s
@@ -148,15 +147,15 @@ void mousePressed() {
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
   //
   if ( mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
-  if (key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
-    println("claimed");}
-  if ( key=='n' || key=='N'|| mouseX>xNightMode && mouseX<yNightMode && mouseY<withNightMode && mouseY>hightNightMode );{ //Nightmode, basic control is Boolean
-    if ( nightmode==true ) {
-      nightmode = false;
-    } else {
-      nightmode = true;
-    }
-  }
-} //End mousePressed
+  if (key==CODED && key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame); println("claimed");
+  //if (mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode );{ //Nightmode, basic control is Boolean
+    //if ( nightmode==true ) {
+      //nightmode = false;
+   // } else {
+    //  nightmode = true;
+   // }
+  //}
+}
+//End mousePressed
 //
 //End MAIN Program
