@@ -88,10 +88,10 @@ void draw() {
 } //End draw
 //
 void keyPressed() {
-   if ( key==CODED && keyCode==UP || keyCode==DOWN ) { //Brightness keybind
+   if (keyCode==UP || keyCode==DOWN ) { //Brightness keybind
     brightnessControl = true;
-    if ( key==CODED && keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber+1
-    if ( key==CODED && keyCode==DOWN ) brightnessNumber-- ; //brightnessNumber-=1
+    if(keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber+1
+    if (keyCode==DOWN ) brightnessNumber-- ; //brightnessNumber-=1
     //CONTINUE HERE with brightness toggles
     println(brightnessNumber);
   }
@@ -99,12 +99,14 @@ void keyPressed() {
 void mousePressed() {
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
   if ( mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
-  if (key==CODED && key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame); println("claimed");
-  //if (mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode );{ //Nightmode, basic control is Boolean
-    //if ( nightmode==true ) {
-      //nightmode = false;
-   // } else {
-    //  nightmode = true;
-   // }
-  //}
+  if (key==ENTER || mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
+  println("claimed");
+  }
+  if (mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode );{ //Nightmode, basic control is Boolean
+    if ( nightmode==true ) {
+      nightmode = false;
+    } else {
+      nightmode = true;
+    }
+  }
 }
