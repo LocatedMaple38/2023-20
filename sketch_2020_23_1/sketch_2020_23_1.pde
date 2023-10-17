@@ -38,6 +38,12 @@ void setup() {
   appWidth = width;
   appHeight = height;
   
+  xQuot = appWidth*0;
+  yQuot = appHeight*0;
+  withQuot = appWidth;
+  hightQuot = appHeight;
+  Quot = loadImage("hello/e8ba44742b649d2ff77f9ad740b41af3.jpg");
+  
   xTitle = appWidth*1/4;
   yTitle = appHeight*1/8;
   widthTitle = appWidth*1/2;
@@ -75,10 +81,15 @@ void setup() {
   footerFont = createFont("ArialMT", 1); 
 }
 void draw() {
+  if (mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit||mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame||mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode) {
+    cursor(rectQuit);
+  } else {
+    cursor(HAND);
+  }
   
   if ( brightnessControl==true ){
     tint (255, brightnessNumber);
-    tint ( 64, 64, 40 ); 
+    tint ( 64, 64, 60 ); 
     println(nightmode);
     } else {
       noTint();
@@ -102,10 +113,10 @@ void draw() {
   image(rectQuit, xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
   image(Clame, xClame, yClame, widthClame, heightClame);
   //image(DidYouKnow, xDidYouKnow, yDidYouKnow, withDidYouKnow, hightDidYouKnow);
-  //image(Quot, xQuot, yQuot, withQuot, hightQuot);
-}
+  }
 
 void keyPressed() {
+ 
   
    if (keyCode==UP || keyCode==DOWN ) { //Brightness keybind
     brightnessControl = true;
@@ -120,7 +131,7 @@ void mousePressed() {
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
   if (mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
   if (mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
-  println("claimed");
+    println("claimed");
   
   }
   if (mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode );{ //Nightmode, basic control is Boolean
