@@ -3,6 +3,9 @@ boolean next=false;
 Boolean brightnessControl=false;
 Boolean nightmode=false;
 
+PImage leftClick;
+PImage curser;
+PImage rightClick;
 PImage rectQuit;
 PImage Clame;
 PImage Quot;
@@ -38,11 +41,16 @@ void setup() {
   appWidth = width;
   appHeight = height;
   
+  curser = loadImage("hello/curser.png");
+  leftClick = loadImage("hello/leftclick.png");
+  rightClick = loadImage("hello/rightClick.png");
+  
+  
   xQuot = appWidth*0;
   yQuot = appHeight*0;
   withQuot = appWidth;
   hightQuot = appHeight;
-  Quot = loadImage("hello/e8ba44742b649d2ff77f9ad740b41af3.jpg");
+  Quot = loadImage("hello/Quot1.jpg");
   
   xTitle = appWidth*1/4;
   yTitle = appHeight*1/8;
@@ -81,11 +89,6 @@ void setup() {
   footerFont = createFont("ArialMT", 1); 
 }
 void draw() {
-  if (mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit||mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame||mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode) {
-    cursor(rectQuit);
-  } else {
-    cursor(HAND);
-  }
   
   if ( brightnessControl==true ){
     tint (255, brightnessNumber);
@@ -128,6 +131,13 @@ void keyPressed() {
 }
 void mousePressed() {
   
+  if (mousePressed && (mouseButton == LEFT) || mousePressed && (mouseButton == RIGHT)) {
+    if (mousePressed && (mouseButton == LEFT)){
+      cursor(leftClick);
+    } else if (mousePressed && (mouseButton == RIGHT)){
+      cursor(rightClick);
+    }
+  }
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
   if (mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
   if (mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
