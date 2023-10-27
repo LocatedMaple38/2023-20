@@ -93,10 +93,8 @@ void draw() {
   if ( brightnessControl==true ){
     tint (255, brightnessNumber);
     tint ( 64, 64, 60 ); 
-    println(nightmode);
     } else {
       noTint();
-      println(nightmode);
   }
   
   textAlign( CENTER, CENTER );
@@ -126,7 +124,6 @@ void keyPressed() {
     if(keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber+1
     if (keyCode==DOWN ) brightnessNumber-- ; //brightnessNumber-=1
     //CONTINUE HERE with brightness toggles
-    println(brightnessNumber);
   }
 }
 void mousePressed() {
@@ -142,7 +139,6 @@ void mousePressed() {
   if (mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
   if (mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
     println("claimed");
-  
   }
   if (mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode );{ //Nightmode, basic control is Boolean
     if ( nightmode==true ) {
