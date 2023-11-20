@@ -1,11 +1,8 @@
 color resetDefaultInk=#000000, black = #000000; 
 boolean next=false; 
-Boolean brightnessControl=false;
-Boolean nightmode=false;
+boolean quit = false;
+boolean card = false;
 
-PImage leftClick;
-PImage curser;
-PImage rightClick;
 PImage rectQuit;
 PImage Clame;
 PImage Quot;
@@ -20,6 +17,12 @@ float xNext, yNext, withNext, heightNext;
 float xNightMode, yNightMode, withNightMode, hightNightMode;
 float xQuot, yQuot, withQuot, hightQuot;
 float xDidYouKnow, yDidYouKnow, withDidYouKnow, hightDidYouKnow;
+float xQuitYes, yQuitYes, widthQuitYes, heightQuitYes;
+float xQuitNo, yQuitNo, widthQuitNo, heightQuitNo;
+float xQuitText, yxQuitText, widthxQuitText, heightxQuitText;
+float xQuitBackground, QuitBackground, widthQuitBackground, heightQuitBackground;
+float xNextOpen, yNextOpen, widthNextOpen, heightNextOpen;
+float xCardMain, yCardMain, widthCardMain, heightCardMain;
 
 int brightnessNumber;
 int appWidth, appHeight;
@@ -28,23 +31,37 @@ int sizeFont, size;
 
 void setup() {
   
-  println(hour());
-  if ( hour()>12 ) {nightmode=true;
-    } else if ( hour()<05 ) {nightmode=true;} 
-      else {
-        nightmode=false;}
-          println("Hello World");
-  
   println("Width:"+width, "\t", "Height:"+height);
   println("Display Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
   size(500, 500);
+  
   appWidth = width;
   appHeight = height;
   
-  curser = loadImage("hello/curser.png");
-  leftClick = loadImage("hello/leftclick.png");
-  rightClick = loadImage("hello/rightClick.png");
+  xNextOpen = appWidth*9/10;
+  yNextOpen = appHeight*9/10;
+  widthNextOpen = appWidth*1/2;
+  heightNextOpen = appHeight*1/10;
   
+  xCardMain = appWidth*1/2;
+  yCardMain = appHeight*1;
+  widthCardMain = appWidth*1/2;
+  heightCardMain = appHeight*1;
+  
+  xQuitNo = appWidth*3/4;
+  yQuitNo = appHeight*1/2;
+  widthQuitNo = appWidth*1/8;
+  heightQuitNo = appHeight*1/8;
+  
+  xQuitBackground = appWidth*0;
+  QuitBackground = appHeight*0;
+  widthQuitBackground = appWidth;
+  heightQuitBackground = appHeight;
+  
+  xQuitYes = appWidth*1/4;
+  yQuitYes = appHeight*1/2;
+  widthQuitYes = appWidth*1/8;
+  heightQuitYes = appHeight*1/8;
   
   xQuot = appWidth*0;
   yQuot = appHeight*0;
@@ -79,72 +96,34 @@ void setup() {
   withNightMode = appWidth*1/25; 
   hightNightMode = appHeight*1/25; 
   
-  rect(xTitle, yTitle, widthTitle, heightTitle );
-  rect(xFooter, yFooter, widthFooter, heightFooter); 
-  rect(xRectQuit, yRectQuit, widthRectQuit, heightRectQuit); 
-  rect(xClame, yClame, widthClame, heightClame);
-  rect(xNightMode, yNightMode, withNightMode, hightNightMode);
-  
   titleFont = createFont("ArialMT", 1);
   footerFont = createFont("ArialMT", 1); 
 }
-void draw() {
-  
-  if ( brightnessControl==true ){
-    tint (255, brightnessNumber);
-    tint ( 64, 64, 60 ); 
-    } else {
-      noTint();
+void draw(){
+  if(quit == true){
+    quitCom();
+    card = false;
   }
-  
-  textAlign( CENTER, CENTER );
-  fill(black); //ink
-  textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  size = 40;
-  
-  textFont(titleFont, size);
-  text (xTitle, yTitle, widthTitle, heightTitle );
-  fill(black); //ink
-  textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  size = 40;
-  
-  textFont(footerFont, size);
-  text (xFooter, yFooter, widthFooter, heightFooter );
-  
-  image(rectQuit, xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
-  image(Clame, xClame, yClame, widthClame, heightClame);
-  //image(DidYouKnow, xDidYouKnow, yDidYouKnow, withDidYouKnow, hightDidYouKnow);
+  if(card == true){
+    card();
   }
-
-void keyPressed() {
- 
-  
-   if (keyCode==UP || keyCode==DOWN ) { //Brightness keybind
-    brightnessControl = true;
-    if(keyCode==UP ) brightnessNumber++ ; //brightnessNumber+=1 //brightnessNumber = brightnessNumber+1
-    if (keyCode==DOWN ) brightnessNumber-- ; //brightnessNumber-=1
-    //CONTINUE HERE with brightness toggles
+  if(card == false){
+    rect(xNextOpen, yNextOpen, widthNextOpen, heightNextOpen);
+    rect(xCardMain, yCardMain, widthCardMain, heightCardMain);
   }
 }
+void keyPressed() {}
 void mousePressed() {
-  
-  if (mousePressed && (mouseButton == LEFT) || mousePressed && (mouseButton == RIGHT)) {
-    if (mousePressed && (mouseButton == LEFT)){
-      cursor(leftClick);
-    } else if (mousePressed && (mouseButton == RIGHT)){
-      cursor(rightClick);
-    }
-  }
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
-  if (mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ) exit();
-  if (mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame);{
+  if (card == true && mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ){
+    quit = true;
+  }else{
+    quit = false;
+  }
+  if (card == true && mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame){
     println("claimed");
   }
-  if (mouseX>xNightMode && mouseX<xNightMode+withNightMode && mouseY>yNightMode && mouseY<yNightMode+hightNightMode );{ //Nightmode, basic control is Boolean
-    if ( nightmode==true ) {
-      nightmode = false;
-      } else {
-      nightmode = true;
-    }
+  if(card == false && mouseX>xNextOpen && mouseX<xNextOpen+widthNextOpen && mouseY>yNextOpen && mouseY<yNextOpen+heightCardMain){
+    card = true;
   }
 }
