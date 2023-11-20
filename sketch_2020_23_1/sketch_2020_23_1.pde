@@ -38,15 +38,15 @@ void setup() {
   appWidth = width;
   appHeight = height;
   
-  xNextOpen = appWidth*9/10;
-  yNextOpen = appHeight*9/10;
-  widthNextOpen = appWidth*1/2;
+  xNextOpen = appWidth*1/10;
+  yNextOpen = appHeight*0;
+  widthNextOpen = appWidth*1/4;
   heightNextOpen = appHeight*1/10;
   
-  xCardMain = appWidth*1/2;
-  yCardMain = appHeight*1;
+  xCardMain = appWidth*1/4;
+  yCardMain = appHeight*0;
   widthCardMain = appWidth*1/2;
-  heightCardMain = appHeight*1;
+  heightCardMain = appHeight-1;
   
   xQuitNo = appWidth*3/4;
   yQuitNo = appHeight*1/2;
@@ -108,8 +108,7 @@ void draw(){
     card();
   }
   if(card == false){
-    rect(xNextOpen, yNextOpen, widthNextOpen, heightNextOpen);
-    rect(xCardMain, yCardMain, widthCardMain, heightCardMain);
+    front();
   }
 }
 void keyPressed() {}
@@ -125,5 +124,8 @@ void mousePressed() {
   }
   if(card == false && mouseX>xNextOpen && mouseX<xNextOpen+widthNextOpen && mouseY>yNextOpen && mouseY<yNextOpen+heightCardMain){
     card = true;
+  }
+  if(quit == true && mouseX>xQuitYes && mouseX<xQuitYes+widthQuitYes && mouseY>yQuitYes && mouseY<yQuitYes+heightQuitYes){
+    exit();
   }
 }
