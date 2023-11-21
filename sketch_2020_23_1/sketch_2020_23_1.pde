@@ -34,12 +34,14 @@ void setup() {
   println("Width:"+width, "\t", "Height:"+height);
   println("Display Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
   size(500, 500);
+  surface.setResizable(true);
+  surface.setLocation(250, 250);
   
   appWidth = width;
   appHeight = height;
   
-  xNextOpen = appWidth*1/10;
-  yNextOpen = appHeight*0;
+  xNextOpen = xCardMain*1/4;
+  yNextOpen = yCardMain*9/10;
   widthNextOpen = appWidth*1/4;
   heightNextOpen = appHeight*1/10;
   
@@ -122,10 +124,13 @@ void mousePressed() {
   if (card == true && mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame){
     println("claimed");
   }
-  if(card == false && mouseX>xNextOpen && mouseX<xNextOpen+widthNextOpen && mouseY>yNextOpen && mouseY<yNextOpen+heightCardMain){
+  if(quit == false && card == false && mouseX>xNextOpen && mouseX<xNextOpen+widthNextOpen && mouseY>yNextOpen && mouseY<yNextOpen+heightCardMain){
     card = true;
   }
   if(quit == true && mouseX>xQuitYes && mouseX<xQuitYes+widthQuitYes && mouseY>yQuitYes && mouseY<yQuitYes+heightQuitYes){
     exit();
+  }
+  if(quit == true && mouseX>xQuitNo && mouseX<xQuitNo+widthQuitNo && mouseY>yQuitNo && mouseY<yQuitNo+heightQuitNo){
+    quit = false;
   }
 }
