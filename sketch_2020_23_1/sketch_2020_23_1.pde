@@ -69,7 +69,7 @@ void setup() {
   yQuot = appHeight*0;
   withQuot = appWidth;
   hightQuot = appHeight;
-  Quot = loadImage("hello/Quot1.jpg");
+  Quot = loadImage("../../hello/Quot1.jpg");
   
   xTitle = appWidth*1/4;
   yTitle = appHeight*1/8;
@@ -85,13 +85,13 @@ void setup() {
   yRectQuit = appHeight*0/20;
   widthRectQuit = appWidth*1/10;
   heightRectQuit = appHeight*1/10;
-  rectQuit = loadImage("hello/exet.png");
+  rectQuit = loadImage("../../hello/exet.png");
   
   xClame = appWidth*3/8;
   yClame = appHeight*3/4;
   widthClame = appWidth*1/4;
   heightClame = appHeight*1/10;
-  Clame = loadImage("hello/next.png");
+  Clame = loadImage("../../hello/next.png");
   
   xNightMode = appWidth*0;
   yNightMode = appHeight*0;
@@ -118,8 +118,6 @@ void mousePressed() {
   println("Mouse X: ", mouseX, "Mouse Y: ", mouseY);
   if (card == true && mouseX>xRectQuit && mouseX<xRectQuit+widthRectQuit && mouseY>yRectQuit && mouseY<yRectQuit+heightRectQuit ){
     quit = true;
-  }else{
-    quit = false;
   }
   if (card == true && mouseX>xClame && mouseX<xClame+widthClame && mouseY>yClame && mouseY<yClame+heightClame){
     println("claimed");

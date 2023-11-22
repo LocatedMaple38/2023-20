@@ -1,4 +1,5 @@
 void card(){
+  background(255);
   fill(255);
   rect(xTitle, yTitle, widthTitle, heightTitle );
   rect(xFooter, yFooter, widthFooter, heightFooter); 
@@ -23,4 +24,5 @@ void card(){
   image(rectQuit, xRectQuit, yRectQuit, widthRectQuit, heightRectQuit);
   image(Clame, xClame, yClame, widthClame, heightClame);
   //image(DidYouKnow, xDidYouKnow, yDidYouKnow, withDidYouKnow, hightDidYouKnow);
+  
 }
